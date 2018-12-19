@@ -6,6 +6,10 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+// Middleware for exposing user-agent information
+const useragent = require("express-useragent");
+app.use(useragent.express());
+
 // Enable CORS
 const cors = require("cors");
 app.use(cors());
@@ -17,7 +21,18 @@ app.get("/", (req, res) => {
 
 // API endpoint
 app.get("/api/whoami", (req, res) => {
-  res.json({ ipaddress: 0, langauge: 0, software: 0 });
+  res.json({
+    ipadress: req.ip,
+    language: req.acceptsLanguages().join(", "),
+    software:
+      "OS: " +
+      req.useragent.os +
+      ", Browser: " +
+      req.useragent.browser +
+      " (v" +
+      req.useragent.version +
+      ")"
+  });
 });
 
 // Listen for requests

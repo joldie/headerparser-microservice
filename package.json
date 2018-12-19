@@ -10,6 +10,14 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "express-useragent": "^1.0.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joldie/headerparser-microservice.git"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0"
   }
 }
